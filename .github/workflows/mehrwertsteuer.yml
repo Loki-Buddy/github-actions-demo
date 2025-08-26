@@ -1,4 +1,4 @@
-name: Test und deployment vom Taschenrechner
+name: Test und deployment vom MehrwersteuerRechner
 
 on : push
 
@@ -16,12 +16,12 @@ jobs:
 
             - name: install dependencies
               run: |
-                cd testing-example 
+                cd mehrwertsteuer 
                 npm install
 
             - name: test
               run: |
-                cd testing-example 
+                cd mehrwertsteuer 
                 npm test
     deploy:
         needs: test
@@ -39,4 +39,4 @@ jobs:
             
             - name: kopiere math.js zu ec2 maschine
               run: |
-                scp -i ~/.ssh/meinPrivateKey testing-example/math.js ubuntu@${{secrets.EC2_IP}}:/home/ubuntu
+                scp -i ~/.ssh/meinPrivateKey mehrwertsteuer/mehrwertsteuer.js ubuntu@${{secrets.EC2_IP}}:/home/ubuntu
